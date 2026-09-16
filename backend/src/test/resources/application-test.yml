@@ -1,19 +1,55 @@
 spring:
+  application:
+    name: universal-ai-backend
+
   datasource:
-    url: jdbc:tc:postgresql:16-alpine:///universalai_test
-    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;MODE=PostgreSQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ''
+
   jpa:
     hibernate:
       ddl-auto: create-drop
-  flyway:
-    enabled: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: false
+    show-sql: false
 
+  flyway:
+    enabled: false  # Desabilitar migrations (H2 cria o schema)
+
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+server:
+  port: 0  # Porta aleatória para testes
+
+# Configurações de teste (fake)
 ai:
+  provider: groq
   groq:
-    api-key: test-key
+    api-key: test-key-for-ci
     base-url: https://api.groq.com/openai/v1
     model: test-model
+    max-tokens: 1000
+    temperature: 0.7
 
 jwt:
-  secret: test-secret-key-for-integration-tests-should-be-long-enough
+  secret: test-secret-key-for-ci-that-is-at-least-256-bits-long-enough
   expiration: 86400000
+
+voice:
+  elevenlabs:
+    api-key: test-key
+    voice-id: test-voice
+    model: test-model
+
+logging:
+  level:
+    com.universalai: WARN
+    org.springframework: WARN
+    org.hibernate: WARN
