@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:tc:postgresql:16-alpine:///universalai_test
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+  flyway:
+    enabled: false
+
+ai:
+  groq:
+    api-key: test-key
+    base-url: https://api.groq.com/openai/v1
+    model: test-model
+
+jwt:
+  secret: test-secret-key-for-integration-tests-should-be-long-enough
+  expiration: 86400000

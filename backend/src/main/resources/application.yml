@@ -1,0 +1,85 @@
+spring:
+  application:
+    name: universal-ai-backend
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/universalai
+    username: admin
+    password: admin123
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: false
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+server:
+  port: 8080
+  error:
+    include-message: always
+
+ai:
+  provider: groq
+  groq:
+    api-key: ${GROQ_API_KEY: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}
+    base-url: https://api.groq.com/openai/v1
+    model: openai/gpt-oss-120b
+    max-tokens: 4096
+    temperature: 0.7
+
+jwt:
+  secret: ${JWT_SECRET:your-256-bit-secret-key-here-that-is-very-secure-and-long}
+  expiration: 31536000000
+
+logging:
+  level:
+    com.universalai: DEBUG
+
+download:
+  path: ./downloads
+
+voice:
+  elevenlabs:
+    api-key: ${ELEVENLABS_API_KEY:sk_cca42b7d04b3d7841bd5c569409feb3d48764ebc29e1fd6d}
+    voice-id: ${ELEVENLABS_VOICE_ID:TX3LPaxmHKxFdv7VOQHJ}
+    model: eleven_multilingual_v2
+
+google:
+  oauth:
+    client-id: ${GOOGLE_CLIENT_ID:675980535583-rab4hr0rv3vm8om2nigd324opo7s7kad.apps.googleusercontent.com}
+    client-secret: ${GOOGLE_CLIENT_SECRET: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}
+    redirect-uri: ${GOOGLE_REDIRECT_URI:http://localhost:8080/api/integrations/oauth/callback}
+    token-url: https://oauth2.googleapis.com/token
+    auth-url: https://accounts.google.com/o/oauth2/v2/auth
+
+notion:
+  oauth:
+    client-id: ${NOTION_CLIENT_ID:3d5d872b-594c-811f-a007-003735a47fbe}
+    client-secret: ${NOTION_CLIENT_SECRET:secret_cnoqdOptrA3oz9fFLrxZY81MDdwkCQ6HlgPMqTuobp0}
+    redirect-uri: ${NOTION_REDIRECT_URI:http://localhost:5173/oauth/notion/callback}
+
+github:
+  oauth:
+    client-id: ${GITHUB_CLIENT_ID:Ov23liia8qfCLNCUCnvt}
+    client-secret: ${GITHUB_CLIENT_SECRET:ab55784259132838f4745d10c1e12f643aa29553}
+    redirect-uri: ${GITHUB_REDIRECT_URI:http://localhost:5173/oauth/github/callback}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: when-authorized

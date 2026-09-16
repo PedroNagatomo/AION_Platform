@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.vite/
+.git/
+.gitignore
+*.log
+.DS_Store
+e2e/
+test-results/
+playwright-report/
+coverage/
+.vscode/
+.idea/

@@ -1,0 +1,340 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --terminal-bg: #0a0a0a;
+  --terminal-surface: #111111;
+  --terminal-border: #1f1f1f;
+  --terminal-text: #e0e0e0;
+  --terminal-dim: #666666;
+  --terminal-accent: #00ff00;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--terminal-bg);
+  color: var(--terminal-text);
+  font-family: "Roboto Mono", monospace;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--terminal-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--terminal-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--terminal-dim);
+}
+
+/* Ajustes para Markdown */
+.prose {
+  line-height: 1.6;
+}
+
+.prose > *:first-child {
+  margin-top: 0;
+}
+
+.prose > *:last-child {
+  margin-bottom: 0;
+}
+
+.prose pre {
+  position: relative;
+}
+
+.prose pre::before {
+  content: "❯ código";
+  display: block;
+  font-size: 10px;
+  color: var(--terminal-dim);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.prose code {
+  font-family: "Roboto Mono", monospace;
+}
+
+.prose blockquote {
+  color: var(--terminal-dim);
+}
+
+/* Animações */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Melhorias de acessibilidade */
+:focus {
+  outline: 2px solid var(--terminal-accent);
+  outline-offset: 2px;
+}
+
+/* Seleção de texto */
+::selection {
+  background: var(--terminal-accent);
+  color: var(--terminal-bg);
+}
+
+/* Estilos do editor Tiptap */
+.tiptap-editor {
+  padding: 16px 24px;
+  min-height: 500px;
+  font-family: "Roboto Mono", monospace;
+  font-size: 14px;
+  color: #e0e0e0;
+  outline: none;
+}
+
+.tiptap-editor h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #00ff00;
+  margin: 16px 0 8px;
+}
+
+.tiptap-editor h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #00ff00;
+  margin: 12px 0 6px;
+}
+
+.tiptap-editor h3 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #00ff00;
+  margin: 10px 0 4px;
+}
+
+.tiptap-editor p {
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.tiptap-editor ul {
+  list-style: disc;
+  padding-left: 24px;
+  margin: 8px 0;
+}
+
+.tiptap-editor ol {
+  list-style: decimal;
+  padding-left: 24px;
+  margin: 8px 0;
+}
+
+.tiptap-editor li {
+  margin: 4px 0;
+}
+
+.tiptap-editor blockquote {
+  border-left: 3px solid #00ff00;
+  padding-left: 16px;
+  margin: 8px 0;
+  color: #666666;
+}
+
+.tiptap-editor code {
+  background: #111111;
+  border: 1px solid #1f1f1f;
+  padding: 2px 4px;
+  font-size: 13px;
+}
+
+.tiptap-editor pre {
+  background: #111111;
+  border: 1px solid #1f1f1f;
+  padding: 12px;
+  margin: 8px 0;
+  overflow-x: auto;
+}
+
+.tiptap-editor pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.tiptap-editor strong {
+  font-weight: bold;
+  color: #00ff00;
+}
+
+.tiptap-editor em {
+  font-style: italic;
+}
+
+.tiptap-editor s {
+  text-decoration: line-through;
+}
+
+/* Placeholder */
+.tiptap-editor p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: #666666;
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+/* Remover outline do editor Tiptap */
+.tiptap-editor:focus,
+.tiptap-editor:focus-visible,
+.ProseMirror:focus,
+.ProseMirror:focus-visible {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Focus Mode */
+.focus-mode .sidebar {
+  display: none;
+}
+
+.focus-mode .header {
+  display: none;
+}
+
+.focus-mode .editor-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  body {
+    font-size: 13px;
+  }
+
+  /* Touch-friendly targets */
+  button,
+  input,
+  select,
+  textarea {
+    touch-action: manipulation;
+  }
+
+  /* Larger tap targets on mobile */
+  .p-3,
+  .px-3,
+  .py-3 {
+    min-height: 44px;
+  }
+}
+
+/* Smooth transitions */
+.transition-all {
+  transition-duration: 300ms;
+}
+
+/* Prevent text selection on buttons */
+button {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+/* Better scrolling on mobile */
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  /* Hide elements on mobile */
+  .hide-mobile {
+    display: none !important;
+  }
+  
+  /* Full width on mobile */
+  .full-width-mobile {
+    width: 100% !important;
+  }
+  
+  /* Stack flex columns on mobile */
+  .stack-mobile {
+    flex-direction: column !important;
+  }
+  
+  /* Smaller padding on mobile */
+  .p-mobile-sm {
+    padding: 0.5rem !important;
+  }
+  
+  /* Full height on mobile */
+  .h-mobile-full {
+    height: 100vh !important;
+  }
+  
+  /* Scrollable horizontal on mobile */
+  .scroll-x-mobile {
+    overflow-x: auto !important;
+  }
+  
+  /* Grid single column on mobile */
+  .grid-mobile-1 {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Grid 2 columns on mobile */
+  .grid-mobile-2 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Even smaller padding */
+  .p-mobile-xs {
+    padding: 0.25rem !important;
+  }
+  
+  /* Hide on very small screens */
+  .hide-xs {
+    display: none !important;
+  }
+  
+  /* Smaller text */
+  .text-xs-mobile {
+    font-size: 0.7rem !important;
+  }
+  
+  .text-sm-mobile {
+    font-size: 0.8rem !important;
+  }
+}
