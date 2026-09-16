@@ -1,4 +1,4 @@
-# 🤖 Universal AI Assistant Platform
+# AION - All in One
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Java](https://img.shields.io/badge/Java-17-orange.svg)](https://openjdk.org/projects/jdk/17/)
