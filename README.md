@@ -13,25 +13,6 @@
 
 ---
 
-## 📋 Table of Contents
-
-- [Overview](#-overview)
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Architecture](#-architecture)
-- [Quick Start](#-quick-start)
-- [Environment Variables](#-environment-variables)
-- [Development](#-development)
-- [Testing](#-testing)
-- [Docker](#-docker)
-- [CI/CD](#-cicd)
-- [Project Structure](#-project-structure)
-- [API Documentation](#-api-documentation)
-- [Contributing](#-contributing)
-- [License](#-license)
-
----
-
 ## 🌟 Overview
 
 **Universal AI Assistant Platform** is a comprehensive productivity suite that combines the power of multiple AI providers with a rich set of tools designed to streamline your daily workflow.
